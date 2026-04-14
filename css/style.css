@@ -3,7 +3,7 @@
    CSS Global — V2 aligné sur charte référence
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap&font-display=swap');
 
 /* --- Variables --- */
 :root {
@@ -11,7 +11,7 @@
   --green:#7CBF94;--green-l:#EAF6EE;--green-d:#2D8251;
   --sky:#A6D3F9;--purple:#988EF2;--coral:#F49390;--yellow:#F6C847;
   --white:#FFFFFF;--g50:#F8F9FB;--g100:#F0F2F7;--g200:#E2E6EF;
-  --g400:#9AA3B8;--g600:#5C6480;--g800:#2D3148;--black:#1A1D2E;
+  --g400:#7A839A;--g600:#4A5268;--g800:#2D3148;--black:#1A1D2E;
   --tf:'Sora',sans-serif;--tb:'Inter',sans-serif;
   --rm:16px;--rl:24px;--rx:32px;--rf:999px;
   --ss:0 2px 8px rgba(56,72,114,.07);
