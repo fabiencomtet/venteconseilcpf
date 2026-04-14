@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auto-diagnostic vente-conseil | KESTIO — Évaluez votre posture commerciale</title>
+<meta name="description" content="Évaluez votre posture de vente-conseil en 5 minutes. Identifiez vos axes de progression et découvrez le parcours certifiant le plus adapté à votre profil.">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* Diagnostic-specific: styled radio options */
+.dopt{position:relative;cursor:pointer}
+.dopt input[type="radio"]{position:absolute;opacity:0;width:0;height:0}
+.dopt-label{display:flex;align-items:flex-start;gap:12px;background:#fff;border:2px solid var(--g200);border-radius:var(--rm);padding:16px 20px;font-size:14px;color:var(--g600);line-height:1.65;transition:all .18s;cursor:pointer}
+.dopt-label:hover{background:var(--g50);border-color:var(--g400)}
+.dopt input[type="radio"]:checked+.dopt-label{border-color:var(--green);background:var(--green-l);color:var(--black);font-weight:500}
+.dopt-level{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;border-radius:50%;font-family:var(--tf);font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.dopt-level--a{background:#FEF0F0;color:#c0392b}
+.dopt-level--b{background:#FEF8E6;color:#7A5E00}
+.dopt-level--c{background:var(--green-l);color:var(--green-d)}
+.dopts{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;font-family:var(--tf);font-weight:700;font-size:14px;flex-shrink:0;margin-right:12px}
+.q-head{display:flex;align-items:center}
+#diag-result{display:none}
+#diag-result.visible{display:block;animation:fadeUp .5s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.result-box{border:2px solid var(--green);background:var(--green-l)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><img src="https://www.kestio.com/wp-content/uploads/2021/02/KESTIO_LOGO-NOIR_RVB.png" alt="KESTIO"></a>
+  <div class="nav-links">
+    <a class="nav-link" href="la-certification.html">La Certification</a>
+    <a class="nav-link" href="formations.html">Parcours</a>
+    <a class="nav-link" href="formations.html">Secteurs</a>
+    <a class="nav-link" href="a-propos.html">Formateurs</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+    <a class="nav-link" href="formations.html">Catalogue</a>
+  </div>
+  <button class="nav-cta" onclick="location.href='index.html#contact'">Contacter un conseiller</button>
+  <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="hero hero--sub">
+  <div class="hero-in">
+    <div class="hero-tag"><span class="hero-dot"></span>Auto-diagnostic gratuit</div>
+    <h1>Évaluez votre posture de <em>vente-conseil</em></h1>
+    <p class="hero-sub">Un diagnostic rapide pour identifier vos axes de progression et le parcours le plus adapté à votre profil. Cinq questions, cinq minutes, une recommandation personnalisée.</p>
+  </div>
+</div>
+
+<!-- QUESTIONNAIRE -->
+<section>
+  <div class="sec-in" style="max-width:720px">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="ey">Questionnaire</div>
+      <h2 class="st">5 questions pour cerner votre profil</h2>
+      <p class="sl" style="margin:0 auto">Répondez spontanément — il n'y a pas de mauvaise réponse. L'objectif est de situer votre pratique actuelle pour vous orienter vers le parcours le plus pertinent.</p>
+    </div>
+
+    <form id="diag-form">
+
+      <!-- Q1 : Préparation RDV -->
+      <div class="ib" style="margin-bottom:24px">
+        <div class="q-head">
+          <span class="q-num">1</span>
+          <h4 style="margin-bottom:0">Avant un rendez-vous client, vous...</h4>
+        </div>
+        <div class="dopts">
+          <label class="dopt">
+            <input type="radio" name="q1" value="1" required>
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--a">A</span>
+              <span>Vous rassemblez les informations de base (nom, société, produit concerné) et préparez votre argumentaire standard.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q1" value="2">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--b">B</span>
+              <span>Vous consultez le site web et les actualités du client pour adapter votre discours à son contexte sectoriel.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q1" value="3">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--c">C</span>
+              <span>Vous analysez les enjeux stratégiques du client, identifiez les parties prenantes et formulez des hypothèses sur ses besoins implicites.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q2 : Premier échange -->
+      <div class="ib" style="margin-bottom:24px">
+        <div class="q-head">
+          <span class="q-num">2</span>
+          <h4 style="margin-bottom:0">Lors d'un premier échange, votre approche privilégiée est...</h4>
+        </div>
+        <div class="dopts">
+          <label class="dopt">
+            <input type="radio" name="q2" value="1" required>
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--a">A</span>
+              <span>Présenter rapidement votre offre et ses avantages pour capter l'attention de votre interlocuteur.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q2" value="2">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--b">B</span>
+              <span>Poser des questions ouvertes pour comprendre la situation actuelle et les attentes exprimées du client.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q2" value="3">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--c">C</span>
+              <span>Créer un cadre d'échange collaboratif, explorer les enjeux profonds et faire émerger des besoins que le client n'avait pas encore formulés.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q3 : Structuration proposition -->
+      <div class="ib" style="margin-bottom:24px">
+        <div class="q-head">
+          <span class="q-num">3</span>
+          <h4 style="margin-bottom:0">Pour structurer votre proposition, vous...</h4>
+        </div>
+        <div class="dopts">
+          <label class="dopt">
+            <input type="radio" name="q3" value="1" required>
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--a">A</span>
+              <span>Utilisez un modèle de proposition standard que vous adaptez avec les informations collectées.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q3" value="2">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--b">B</span>
+              <span>Personnalisez votre proposition en reprenant les besoins exprimés et en argumentant point par point.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q3" value="3">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--c">C</span>
+              <span>Co-construisez la solution avec le client, en intégrant ses contraintes, ses critères de décision et les indicateurs de réussite qu'il valorise.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q4 : Gestion objections -->
+      <div class="ib" style="margin-bottom:24px">
+        <div class="q-head">
+          <span class="q-num">4</span>
+          <h4 style="margin-bottom:0">Face à une objection client, vous...</h4>
+        </div>
+        <div class="dopts">
+          <label class="dopt">
+            <input type="radio" name="q4" value="1" required>
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--a">A</span>
+              <span>Répondez directement avec un argument préparé pour lever le frein identifié.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q4" value="2">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--b">B</span>
+              <span>Reformulez l'objection pour montrer que vous l'avez comprise, puis apportez une réponse argumentée.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q4" value="3">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--c">C</span>
+              <span>Accueillez l'objection comme un signal, explorez la préoccupation sous-jacente et ajustez votre approche en conséquence.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Q5 : Suivi post-vente -->
+      <div class="ib" style="margin-bottom:24px">
+        <div class="q-head">
+          <span class="q-num">5</span>
+          <h4 style="margin-bottom:0">Après la vente, votre suivi consiste à...</h4>
+        </div>
+        <div class="dopts">
+          <label class="dopt">
+            <input type="radio" name="q5" value="1" required>
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--a">A</span>
+              <span>Envoyer un email de remerciement et rester disponible en cas de question.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q5" value="2">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--b">B</span>
+              <span>Planifier un point de suivi pour vérifier la satisfaction et identifier d'éventuels besoins complémentaires.</span>
+            </div>
+          </label>
+          <label class="dopt">
+            <input type="radio" name="q5" value="3">
+            <div class="dopt-label">
+              <span class="dopt-level dopt-level--c">C</span>
+              <span>Mettre en place un accompagnement structuré, mesure. les résultats obtenus et proposer proactivement des leviers d'optimisation.</span>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:36px">
+        <button type="submit" id="diag-submit" class="btn-bl" style="padding:16px 40px;font-size:15px">Obtenir ma recommandation</button>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- RESULTAT -->
+<section class="bg-s" id="diag-result">
+  <div class="sec-in" style="max-width:720px">
+
+    <div class="ib result-box" style="text-align:center;padding:36px">
+      <div style="margin-bottom:8px">
+        <span class="badge b-gn" id="diag-score-badge" style="font-size:13px;padding:6px 14px"></span>
+      </div>
+      <h3 class="st" id="diag-result-title" style="font-size:22px;margin-bottom:12px"></h3>
+      <p id="diag-result-text" style="max-width:560px;margin:0 auto 24px;font-size:14px;color:var(--g600);line-height:1.75"></p>
+      <a id="diag-result-cta" href="formations.html" class="btn-bl">Voir ce parcours</a>
+    </div>
+
+    <!-- Capture email -->
+    <div class="ib" style="margin-top:24px;text-align:center">
+      <h4>Recevez votre rapport détaillé</h4>
+      <p style="max-width:460px;margin:0 auto 16px">Renseignez votre adresse email pour recevoir une analyse complète de votre profil, accompagnée de recommandations pratiques pour progresser.</p>
+      <div style="display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center">
+        <div class="fgrp" style="flex:1;min-width:240px">
+          <input class="finp" type="email" id="diag-email" placeholder="votre.email@entreprise.com">
+        </div>
+        <button type="button" id="diag-send" class="btn-gn" style="white-space:nowrap">Envoyer le rapport</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta">
+  <h2>Prêt à structurer votre montée en compétences ?</h2>
+  <p>Découvrez nos 4 parcours certifiants et choisissez celui qui correspond le mieux à votre profil et à vos objectifs.</p>
+  <div class="cta-acts">
+    <a href="formations.html" class="btn-w">Voir les parcours</a>
+    <a href="contact.html" class="btn-gh">Échanger avec un conseiller</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-br">
+      <img src="https://www.kestio.com/wp-content/uploads/2021/02/KESTIO_LOGO-NOIR_RVB.png" alt="KESTIO">
+      <div class="ft-sub">L'expertise commerciale au service de votre croissance depuis 2005. Lyon · Paris</div>
+    </div>
+    <div class="ft-col">
+      <h4>Certification</h4>
+      <ul>
+        <li><a href="la-certification.html">La certification</a></li>
+        <li><a href="la-certification.html">Les 5 compétences</a></li>
+        <li><a href="la-certification.html">Modalités d'évaluation</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Formation</h4>
+      <ul>
+        <li><a href="formations/fondamentaux-vente-conseil.html">Parcours Fondamentaux</a></li>
+        <li><a href="formations/posture-relation-client.html">Parcours Posture</a></li>
+        <li><a href="formations/vente-complexe.html">Vente complexe</a></li>
+        <li><a href="formations/vente-augmentee-ia.html">Parcours IA</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Entreprises</h4>
+      <ul>
+        <li><a href="entreprises.html">Dispositif intra</a></li>
+        <li><a href="contact.html">Financement OPCO</a></li>
+        <li><a href="diagnostic.html">Diagnostic gratuit</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>KESTIO</h4>
+      <ul>
+        <li><a href="https://kestio-landing-pages.osc-fr1.scalingo.io/homepage/" target="_blank">Site principal</a></li>
+        <li><a href="https://bizcoach.kestio.com" target="_blank">Agents IA</a></li>
+        <li><a href="https://kestio-landing-pages.osc-fr1.scalingo.io/catalogue-formations-2026/" target="_blank">Catalogue formations</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>&copy; 2026 KESTIO. Tous droits réservés. Certifié Qualiopi.</span>
+    <span><a href="#" style="color:rgba(255,255,255,.5);margin-right:16px">Mentions légales</a><a href="#" style="color:rgba(255,255,255,.5)">Politique de confidentialité</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form=document.getElementById('diag-form');
+  var result=document.getElementById('diag-result');
+  var resultTitle=document.getElementById('diag-result-title');
+  var resultText=document.getElementById('diag-result-text');
+  var resultCta=document.getElementById('diag-result-cta');
+  var scoreBadge=document.getElementById('diag-score-badge');
+  var sendBtn=document.getElementById('diag-send');
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var answers=[];
+    for(var i=1;i<=5;i++){
+      var sel=form.querySelector('input[name="q'+i+'"]:checked');
+      if(!sel){alert('Veuillez répondre à l\'ensemble des questions avant de valider.');return;}
+      answers.push(parseInt(sel.value));
+    }
+    var total=answers.reduce(function(a,b){return a+b},0);
+
+    var titre,texte,lien;
+
+    if(total<=8){
+      titre='Parcours recommandé : Fondamentaux de la vente-conseil';
+      texte='Vos réponses indiquent que vous disposez de bases solides en vente, mais que la structuration de votre démarche conseil mérite d\'être renforcée. Le parcours Fondamentaux vous permettra d\'acquérir les repères méthodologiques essentiels pour passer d\'une logique produit à une logique conseil, et d\'obtenir votre certification.';
+      lien='formations/fondamentaux-vente-conseil.html';
+    }else if(total<=11){
+      titre='Parcours recommandé : Posture & relation client';
+      texte='Vos réponses révèlent une bonne maîtrise des fondamentaux commerciaux, avec un potentiel significatif de progression sur la dimension relationnelle. Le parcours Posture & relation client vous aidera à développer une écoute active approfondie, à instaurer une relation de confiance durable et à certifiér ces compétences.';
+      lien='formations/posture-relation-client.html';
+    }else if(total<=13){
+      titre='Parcours recommandé : Vente complexe';
+      texte='Vos réponses témoignent d\'une pratique déjà avancée de la vente-conseil. Le parcours Vente complexe vous permettra de structurer votre approche sur des cycles longs impliquant de multiples interlocuteurs, et de certifiér votre capacité à piloter des affaires à forte valeur ajoutée.';
+      lien='formations/vente-complexe.html';
+    }else{
+      titre='Parcours recommandé : Vente augmentée par l\'IA';
+      texte='Vos réponses indiquent une maîtrise aboutie de la posture de vente-conseil. Le parcours Vente augmentée par l\'IA vous permettra d\'intégrer les outils d\'intelligence artificielle dans votre pratique quotidienne pour gagner en efficacité et en pertinence, tout en obtenant votre certification.';
+      lien='formations/vente-augmentee-ia.html';
+    }
+
+    scoreBadge.textContent='Score : '+total+' / 15';
+    resultTitle.textContent=titre;
+    resultText.textContent=texte;
+    resultCta.href=lien;
+    resultCta.textContent='Découvrir ce parcours \u2192';
+
+    result.classList.add('visible');
+    setTimeout(function(){result.scrollIntoView({behavior:'smooth',block:'start'})},100);
+  });
+
+  sendBtn.addEventListener('click',function(){
+    var emailInput=document.getElementById('diag-email');
+    var email=emailInput.value.trim();
+    if(!email||email.indexOf('@')===-1){
+      alert('Veuillez saisir une adresse email valide.');
+      return;
+    }
+    sendBtn.textContent='Envoyé !';
+    sendBtn.disabled=true;
+    sendBtn.style.opacity='0.6';
+    sendBtn.style.cursor='default';
+    emailInput.disabled=true;
+    emailInput.style.background='var(--g50)';
+  });
+})();
+</script>
+</body>
+</html>

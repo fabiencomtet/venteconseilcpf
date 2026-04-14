@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | KESTIO - Certification Vente-Conseil</title>
+<meta name="description" content="Contactez KESTIO pour toute question sur la certification vente-conseil, les formations, le financement ou l'accessibilité. Paris et Lyon.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-logo" href="index.html"><img src="https://www.kestio.com/wp-content/uploads/2021/02/KESTIO_LOGO-NOIR_RVB.png" alt="KESTIO"></a>
+  <div class="nav-links">
+    <a class="nav-link" href="la-certification.html">La Certification</a>
+    <a class="nav-link" href="formations.html">Parcours</a>
+    <a class="nav-link" href="formations.html">Secteurs</a>
+    <a class="nav-link" href="a-propos.html">Formateurs</a>
+    <a class="nav-link" href="faq.html">FAQ</a>
+    <a class="nav-link" href="formations.html">Catalogue</a>
+  </div>
+  <a class="nav-cta" href="contact.html">Contacter un conseiller</a>
+  <button class="nav-burger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="hero hero--sub">
+  <div class="hero-in">
+    <div class="hero-tag"><span class="hero-dot"></span>Contact</div>
+    <h1>Contactez-<em>nous</em></h1>
+    <p class="hero-sub">Pas de chatbot, pas de réponse automatique. Un expert de la performance commerciale vous rappelle personnellement pour comprendre votre contexte et construire avec vous la meilleure solution.</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section>
+  <div class="sec-in">
+    <div class="g2" style="gap:48px;align-items:start">
+
+      <!-- Colonne gauche : Informations -->
+      <div>
+        <div class="ey">Informations</div>
+        <h2 class="st">Nos coordonnées</h2>
+
+        <div class="ib" style="margin-bottom:20px">
+          <h4>Telephone</h4>
+          <p><a href="tel:+33185089275" style="color:var(--green);font-weight:600">01 85 08 92 75</a></p>
+          <p style="font-size:12px;color:var(--g400);margin:0">Du lundi au vendredi, de 9h a 18h</p>
+        </div>
+
+        <div class="ib" style="margin-bottom:20px">
+          <h4>Email</h4>
+          <p><a href="mailto:formation@kestio.com" style="color:var(--green);font-weight:600">formation@kestio.com</a></p>
+          <p style="font-size:12px;color:var(--g400);margin:0">Réponse sous 24 heures ouvrables</p>
+        </div>
+
+        <div class="ib" style="margin-bottom:20px">
+          <h4>Nos adresses</h4>
+          <p><strong>Paris</strong><br>KESTIO - Paris</p>
+          <p><strong>Lyon</strong><br>KESTIO - Lyon</p>
+        </div>
+
+        <div style="margin-top:20px;border-radius:var(--rl);overflow:hidden">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Un accompagnement humain et personnalisé" style="width:100%;height:180px;object-fit:cover;border-radius:var(--rl)" loading="lazy">
+        </div>
+
+        <div class="ib">
+          <h4>Certifications et reconnaissances</h4>
+          <p>KESTIO est un organisme de formation certifié <strong>Qualiopi</strong> au titre des actions de formation. Nos parcours certifiants sont inscrits au <strong>Répertoire Spécifique de France Compétences</strong>.</p>
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <span class="badge b-gn">Qualiopi</span>
+            <span class="badge b-bl">France Compétences RS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne droite : Formulaire -->
+      <div>
+        <div class="ey">Formulaire</div>
+        <h2 class="st">Envoyez-nous un message</h2>
+        <div style="background:#fff;border-radius:var(--rl);border:1px solid var(--g100);padding:28px;box-shadow:var(--sm)">
+          <form onsubmit="handleForm(event)">
+            <div class="fg">
+              <div class="fgrp"><label for="nom">Nom *</label><input class="finp" type="text" id="nom" placeholder="Votre nom" required></div>
+              <div class="fgrp"><label for="prenom">Prenom *</label><input class="finp" type="text" id="prenom" placeholder="Votre prenom" required></div>
+              <div class="fgrp"><label for="email">Email *</label><input class="finp" type="email" id="email" placeholder="votre@email.com" required></div>
+              <div class="fgrp"><label for="telephone">Telephone</label><input class="finp" type="tel" id="telephone" placeholder="01 23 45 67 89"></div>
+              <div class="fgrp ff"><label for="objet">Objet de votre demande *</label>
+                <select class="fsel" id="objet" required>
+                  <option value="" disabled selected>Sélectionnez un objet</option>
+                  <option value="information-formation">Information sur une formation</option>
+                  <option value="devis-intra">Demande de devis intra-entreprise</option>
+                  <option value="financement">Financement (OPCO, prise en charge)</option>
+                  <option value="autre">Autre demande</option>
+                </select>
+              </div>
+              <div class="fgrp ff"><label for="message">Message *</label>
+                <textarea class="finp" id="message" placeholder="Decrivez votre demande..." required rows="5" style="resize:vertical"></textarea>
+              </div>
+            </div>
+            <div id="form-ok" style="display:none;margin-top:20px;padding:16px 20px;background:var(--green-l);border-radius:var(--rm);font-family:var(--tf);font-size:14px;font-weight:600;color:#2D6B47;text-align:center">Votre message a bien été envoye — nous vous repondons sous 24h.</div>
+            <button type="submit" class="btn-bl btn-full" style="margin-top:20px;padding:15px;font-size:15px">Envoyer</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-br">
+      <img src="https://www.kestio.com/wp-content/uploads/2021/02/KESTIO_LOGO-NOIR_RVB.png" alt="KESTIO">
+      <div class="ft-sub">L'expertise commerciale au service de votre croissance depuis 2005. Lyon · Paris</div>
+    </div>
+    <div class="ft-col">
+      <h4>Certification</h4>
+      <ul>
+        <li><a href="la-certification.html">La certification</a></li>
+        <li><a href="la-certification.html">Les 5 compétences</a></li>
+        <li><a href="la-certification.html">Modalités d'évaluation</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Formation</h4>
+      <ul>
+        <li><a href="formations/fondamentaux-vente-conseil.html">Parcours Fondamentaux</a></li>
+        <li><a href="formations/posture-relation-client.html">Parcours Posture</a></li>
+        <li><a href="formations/vente-complexe.html">Vente complexe</a></li>
+        <li><a href="formations/vente-augmentee-ia.html">Parcours IA</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Entreprises</h4>
+      <ul>
+        <li><a href="entreprises.html">Dispositif intra</a></li>
+        <li><a href="contact.html">Financement OPCO</a></li>
+        <li><a href="diagnostic.html">Diagnostic gratuit</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>KESTIO</h4>
+      <ul>
+        <li><a href="https://kestio-landing-pages.osc-fr1.scalingo.io/homepage/" target="_blank">Site principal</a></li>
+        <li><a href="https://bizcoach.kestio.com" target="_blank">Agents IA</a></li>
+        <li><a href="https://kestio-landing-pages.osc-fr1.scalingo.io/catalogue-formations-2026/" target="_blank">Catalogue formations</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <span>&copy; 2026 KESTIO. Tous droits reserves. Certifié Qualiopi.</span>
+    <span><a href="#" style="color:rgba(255,255,255,.5);margin-right:16px">Mentions legales</a><a href="#" style="color:rgba(255,255,255,.5)">Politique de confidentialite</a></span>
+  </div>
+</footer>
+
+<script>
+function handleForm(e){e.preventDefault();document.getElementById('form-ok').style.display='block';e.target.querySelector('button[type="submit"]').style.display='none'}
+</script>
+</body>
+</html>
