@@ -3,7 +3,9 @@
    CSS Global — V2 aligné sur charte référence
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap&font-display=swap');
+/* Self-hosted fonts — no Google Fonts dependency */
+@font-face{font-family:'Inter';src:url('../fonts/inter-latin.woff2') format('woff2');font-weight:300 500;font-style:normal;font-display:swap}
+@font-face{font-family:'Sora';src:url('../fonts/sora-latin.woff2') format('woff2');font-weight:400 800;font-style:normal;font-display:swap}
 
 /* --- Variables --- */
 :root {
