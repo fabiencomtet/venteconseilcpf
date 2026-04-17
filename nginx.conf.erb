@@ -1,29 +1,23 @@
-server {
-  listen <%= ENV['PORT'] %>;
-  server_name _;
-  keepalive_timeout 5;
+# Inclus dans le bloc server { } du buildpack nginx Scalingo
+# Le bloc http {}, server { listen, server_name, root } est défini par base_nginx.conf.erb
 
-  root /app;
-  index index.html;
-
-  # Cache long pour les assets statiques
-  location ~* \.(?:css|js|woff2?|ttf|otf|eot|svg|png|jpe?g|webp|avif|ico|gif)$ {
-    expires 1y;
-    add_header Cache-Control "public, immutable";
-    access_log off;
-  }
-
-  # Pages HTML : pas de cache agressif
-  location ~* \.html$ {
-    expires -1;
-    add_header Cache-Control "no-cache, must-revalidate";
-  }
-
-  # On essaie le fichier, puis le dossier, puis ajoute .html, puis 404
-  location / {
-    try_files $uri $uri/ $uri.html =404;
-  }
-
-  error_page 404 /404.html;
-  error_page 500 502 503 504 /50x.html;
+# Cache long pour les assets statiques
+location ~* \.(?:css|js|woff2?|ttf|otf|eot|svg|png|jpe?g|webp|avif|ico|gif)$ {
+  expires 1y;
+  add_header Cache-Control "public, immutable";
+  access_log off;
 }
+
+# Pages HTML : pas de cache agressif (mises à jour fréquentes)
+location ~* \.html$ {
+  expires -1;
+  add_header Cache-Control "no-cache, must-revalidate";
+}
+
+# Routing : on essaie le fichier, puis le dossier, puis ajoute .html, puis 404
+location / {
+  try_files $uri $uri/ $uri.html =404;
+}
+
+error_page 404 /404.html;
+error_page 500 502 503 504 /50x.html;
