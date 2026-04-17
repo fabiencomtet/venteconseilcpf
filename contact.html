@@ -44,34 +44,50 @@
         <h2 class="st">Nos coordonnées</h2>
 
         <div class="ib" style="margin-bottom:20px">
-          <h4>Telephone</h4>
+          <h4>Téléphone</h4>
           <p><a href="tel:+33185089275" style="color:var(--green);font-weight:600">01 85 08 92 75</a></p>
-          <p style="font-size:12px;color:var(--g400);margin:0">Du lundi au vendredi, de 9h a 18h</p>
+          <p style="font-size:12px;color:var(--g400);margin:0">Du lundi au vendredi, de 9h à 18h30 — Un conseiller dédié vous rappelle sous 24 heures ouvrables.</p>
         </div>
 
         <div class="ib" style="margin-bottom:20px">
           <h4>Email</h4>
           <p><a href="mailto:formation@kestio.com" style="color:var(--green);font-weight:600">formation@kestio.com</a></p>
-          <p style="font-size:12px;color:var(--g400);margin:0">Réponse sous 24 heures ouvrables</p>
+          <p style="font-size:12px;color:var(--g400);margin:0">Réponse personnalisée sous 24 heures ouvrables. Un interlocuteur unique suit votre demande du premier échange à la signature.</p>
         </div>
 
         <div class="ib" style="margin-bottom:20px">
-          <h4>Nos adresses</h4>
-          <p><strong>Paris</strong><br>KESTIO - Paris</p>
-          <p><strong>Lyon</strong><br>KESTIO - Lyon</p>
+          <h4>Nos bureaux</h4>
+          <p style="margin-bottom:12px"><strong>Siège — Lyon</strong><br>57 place de la République<br>69002 LYON</p>
+          <p style="margin:0"><strong>Bureau parisien</strong><br>Adresse communiquée sur demande, à l'occasion de votre rendez-vous.</p>
         </div>
 
-        <div style="margin-top:20px;border-radius:var(--rl);overflow:hidden">
+        <div style="margin-top:20px;margin-bottom:20px;border-radius:var(--rl);overflow:hidden">
           <img src="img/partenariat.webp" alt="Un accompagnement humain et personnalisé" style="width:100%;height:180px;object-fit:cover;border-radius:var(--rl)" loading="lazy">
         </div>
 
-        <div class="ib">
+        <div class="ib" style="margin-bottom:20px">
+          <h4>Délai d'accès à la formation</h4>
+          <p>Conformément à nos obligations Qualiopi, le délai d'accès minimum est de <strong>onze jours ouvrés</strong> entre votre demande d'inscription et le premier jour de formation. En pratique, nos sessions inter s'ouvrent à dates fixes selon le calendrier publié ; les dispositifs intra-entreprise sont planifiés sous quatre à huit semaines, le temps d'ajuster le programme à votre contexte.</p>
+        </div>
+
+        <div class="ib" style="margin-bottom:20px">
+          <h4>Référent handicap</h4>
+          <p>KESTIO est engagé dans une démarche inclusive. Un référent handicap dédié accueille chaque demande d'aménagement en toute confidentialité et étudie, au cas par cas, les adaptations matérielles, pédagogiques ou organisationnelles nécessaires.</p>
+          <p style="margin-top:10px"><a href="mailto:formation@kestio.com?subject=Demande%20d%27am%C3%A9nagement%20-%20R%C3%A9f%C3%A9rent%20handicap" style="color:var(--green);font-weight:600">Contacter le référent handicap</a></p>
+        </div>
+
+        <div class="ib" style="margin-bottom:20px">
           <h4>Certifications et reconnaissances</h4>
           <p>KESTIO est un organisme de formation certifié <strong>Qualiopi</strong> au titre des actions de formation. Nos parcours certifiants sont inscrits au <strong>Répertoire Spécifique de France Compétences</strong>.</p>
-          <div style="display:flex;gap:8px;margin-top:12px">
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
             <span class="badge b-gn">Qualiopi</span>
             <span class="badge b-bl">France Compétences RS</span>
           </div>
+        </div>
+
+        <div class="ib">
+          <h4>Informations légales</h4>
+          <p style="font-size:13px;line-height:1.7;margin:0">Société par Actions Simplifiée au capital social défini aux statuts.<br>RCS LYON <strong>485 190 433</strong>.<br>Organisme de formation enregistré auprès du Préfet de Région Auvergne-Rhône-Alpes — cet enregistrement ne vaut pas agrément de l'État.</p>
         </div>
       </div>
 
@@ -83,9 +99,9 @@
           <form onsubmit="handleForm(event)">
             <div class="fg">
               <div class="fgrp"><label for="nom">Nom *</label><input class="finp" type="text" id="nom" placeholder="Votre nom" required></div>
-              <div class="fgrp"><label for="prenom">Prenom *</label><input class="finp" type="text" id="prenom" placeholder="Votre prenom" required></div>
+              <div class="fgrp"><label for="prenom">Prénom *</label><input class="finp" type="text" id="prenom" placeholder="Votre prénom" required></div>
               <div class="fgrp"><label for="email">Email *</label><input class="finp" type="email" id="email" placeholder="votre@email.com" required></div>
-              <div class="fgrp"><label for="telephone">Telephone</label><input class="finp" type="tel" id="telephone" placeholder="01 23 45 67 89"></div>
+              <div class="fgrp"><label for="telephone">Téléphone</label><input class="finp" type="tel" id="telephone" placeholder="01 23 45 67 89"></div>
               <div class="fgrp ff"><label for="objet">Objet de votre demande *</label>
                 <select class="fsel" id="objet" required>
                   <option value="" disabled selected>Sélectionnez un objet</option>
@@ -96,10 +112,10 @@
                 </select>
               </div>
               <div class="fgrp ff"><label for="message">Message *</label>
-                <textarea class="finp" id="message" placeholder="Decrivez votre demande..." required rows="5" style="resize:vertical"></textarea>
+                <textarea class="finp" id="message" placeholder="Décrivez votre demande..." required rows="5" style="resize:vertical"></textarea>
               </div>
             </div>
-            <div id="form-ok" style="display:none;margin-top:20px;padding:16px 20px;background:var(--green-l);border-radius:var(--rm);font-family:var(--tf);font-size:14px;font-weight:600;color:#2D6B47;text-align:center">Votre message a bien été envoye — nous vous repondons sous 24h.</div>
+            <div id="form-ok" style="display:none;margin-top:20px;padding:16px 20px;background:var(--green-l);border-radius:var(--rm);font-family:var(--tf);font-size:14px;font-weight:600;color:#2D6B47;text-align:center">Votre message a bien été envoyé — nous vous répondons sous 24h.</div>
             <button type="submit" class="btn-bl btn-full" style="margin-top:20px;padding:15px;font-size:15px">Envoyer</button>
           </form>
         </div>
@@ -153,8 +169,8 @@
     </div>
   </div>
   <div class="ft-bot">
-    <span>&copy; 2026 KESTIO. Tous droits reserves. Certifié Qualiopi.</span>
-    <span><a href="#" style="color:rgba(255,255,255,.5);margin-right:16px">Mentions legales</a><a href="#" style="color:rgba(255,255,255,.5)">Politique de confidentialite</a></span>
+    <span>&copy; 2026 KESTIO. Tous droits réservés. Certifié Qualiopi.</span>
+    <span><a href="#" style="color:rgba(255,255,255,.5);margin-right:16px">Mentions légales</a><a href="#" style="color:rgba(255,255,255,.5)">Politique de confidentialité</a></span>
   </div>
 </footer>
 
