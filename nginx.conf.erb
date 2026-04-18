@@ -1,31 +1,28 @@
 # Inclus dans le bloc server { } du buildpack nginx Scalingo
-# Le bloc http {}, server { listen, server_name, root } est défini par base_nginx.conf.erb
+# Les add_header d'un location écrasent ceux du parent (nginx inheritance rule)
+# → on déclare les headers UNIQUEMENT ici, au niveau server, avec "always"
+# → dans les locations on utilise uniquement `expires` (qui passe par une directive séparée)
 
-# --- Headers de sécurité ---
+# --- Headers de sécurité (niveau server) ---
 add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
 add_header X-Content-Type-Options "nosniff" always;
 add_header X-Frame-Options "SAMEORIGIN" always;
 add_header Referrer-Policy "strict-origin-when-cross-origin" always;
 add_header Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=()" always;
-
-# CSP : autorise self + FormSubmit (AJAX), inline pour onclick handlers et styles inline
 add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'self'; base-uri 'self'; object-src 'none'" always;
 
-# Cache long pour les assets statiques (1 an, immutables)
+# --- Cache long pour les assets statiques (1 an) ---
 location ~* \.(?:css|js|woff2?|ttf|otf|eot|svg|png|jpe?g|webp|avif|ico|gif)$ {
   expires 1y;
-  add_header Cache-Control "public, immutable";
-  add_header X-Content-Type-Options "nosniff";
   access_log off;
 }
 
-# Pages HTML : pas de cache agressif (mises à jour fréquentes)
+# --- Pages HTML : pas de cache agressif (mises à jour fréquentes) ---
 location ~* \.html$ {
   expires -1;
-  add_header Cache-Control "no-cache, must-revalidate";
 }
 
-# robots.txt et sitemap.xml servis directement
+# --- robots.txt et sitemap.xml : logs off ---
 location = /robots.txt {
   access_log off;
   log_not_found off;
@@ -35,12 +32,12 @@ location = /sitemap.xml {
   log_not_found off;
 }
 
-# Bloquer User-Agents malveillants / scrapers connus
+# --- Blocage User-Agents scrapers commerciaux ---
 if ($http_user_agent ~* (AhrefsBot|SemrushBot|DotBot|MJ12bot|PetalBot)) {
   return 403;
 }
 
-# Routing : on essaie le fichier, puis le dossier, puis ajoute .html, puis 404
+# --- Routing : fichier → dossier → ajout .html → 404 ---
 location / {
   try_files $uri $uri/ $uri.html =404;
 }
