@@ -1,8 +1,8 @@
-/* KESTIO — Site Certification Vente-Conseil — JS */
+/* KESTIO — Site Certification Vente-Conseil — JS (v2) */
 
 const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/fabien.comtet@kestio.com';
 
-// Mobile menu toggle
+// Mobile menu toggle + attachement sécurisé des formulaires
 document.addEventListener('DOMContentLoaded', () => {
   const burger = document.querySelector('.nav-burger');
   const links = document.querySelector('.nav-links');
@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     burger.addEventListener('click', () => links.classList.toggle('open'));
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
   }
+
+  // Attache le handler sur tous les formulaires — plus robuste que onsubmit inline
+  // Supprime l'éventuel onsubmit HTML pour éviter le double-appel
+  document.querySelectorAll('form[data-form-type]').forEach((form) => {
+    form.removeAttribute('onsubmit');
+    form.addEventListener('submit', handleForm);
+  });
 
   // Pré-remplissage contact.html depuis paramètres URL (inscription à une session)
   prefillInscriptionContext();
