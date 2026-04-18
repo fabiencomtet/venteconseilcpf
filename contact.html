@@ -96,14 +96,19 @@
         <div class="ey">Formulaire</div>
         <h2 class="st">Envoyez-nous un message</h2>
         <div style="background:#fff;border-radius:var(--rl);border:1px solid var(--g100);padding:28px;box-shadow:var(--sm)">
-          <form onsubmit="handleForm(event)">
+          <form onsubmit="handleForm(event)" data-form-type="contact">
+            <input type="hidden" name="_subject" value="KESTIO — Nouveau message de contact">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="Formulaire" value="Contact général (page contact)">
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
             <div class="fg">
-              <div class="fgrp"><label for="nom">Nom *</label><input class="finp" type="text" id="nom" placeholder="Votre nom" required></div>
-              <div class="fgrp"><label for="prenom">Prénom *</label><input class="finp" type="text" id="prenom" placeholder="Votre prénom" required></div>
-              <div class="fgrp"><label for="email">Email *</label><input class="finp" type="email" id="email" placeholder="votre@email.com" required></div>
-              <div class="fgrp"><label for="telephone">Téléphone</label><input class="finp" type="tel" id="telephone" placeholder="01 23 45 67 89"></div>
+              <div class="fgrp"><label for="nom">Nom *</label><input class="finp" type="text" id="nom" name="Nom" placeholder="Votre nom" required></div>
+              <div class="fgrp"><label for="prenom">Prénom *</label><input class="finp" type="text" id="prenom" name="Prénom" placeholder="Votre prénom" required></div>
+              <div class="fgrp"><label for="email">Email *</label><input class="finp" type="email" id="email" name="email" placeholder="votre@email.com" required></div>
+              <div class="fgrp"><label for="telephone">Téléphone</label><input class="finp" type="tel" id="telephone" name="Téléphone" placeholder="01 23 45 67 89"></div>
               <div class="fgrp ff"><label for="objet">Objet de votre demande *</label>
-                <select class="fsel" id="objet" required>
+                <select class="fsel" id="objet" name="Objet" required>
                   <option value="" disabled selected>Sélectionnez un objet</option>
                   <option value="information-formation">Information sur une formation</option>
                   <option value="devis-intra">Demande de devis intra-entreprise</option>
@@ -112,10 +117,10 @@
                 </select>
               </div>
               <div class="fgrp ff"><label for="message">Message *</label>
-                <textarea class="finp" id="message" placeholder="Décrivez votre demande..." required rows="5" style="resize:vertical"></textarea>
+                <textarea class="finp" id="message" name="Message" placeholder="Décrivez votre demande..." required rows="5" style="resize:vertical"></textarea>
               </div>
             </div>
-            <div id="form-ok" style="display:none;margin-top:20px;padding:16px 20px;background:var(--green-l);border-radius:var(--rm);font-family:var(--tf);font-size:14px;font-weight:600;color:#2D6B47;text-align:center">Votre message a bien été envoyé — nous vous répondons sous 24h.</div>
+            <div id="form-ok" data-form-ok style="display:none;margin-top:20px;padding:16px 20px;background:var(--green-l);border-radius:var(--rm);font-family:var(--tf);font-size:14px;font-weight:600;color:#2D6B47;text-align:center">Votre message a bien été envoyé — nous vous répondons sous 24h.</div>
             <button type="submit" class="btn-bl btn-full" style="margin-top:20px;padding:15px;font-size:15px">Envoyer</button>
           </form>
         </div>
@@ -174,8 +179,7 @@
   </div>
 </footer>
 
-<script>
-function handleForm(e){e.preventDefault();document.getElementById('form-ok').style.display='block';e.target.querySelector('button[type="submit"]').style.display='none'}
-</script>
+
+<script src="js/main.js"></script>
 </body>
 </html>

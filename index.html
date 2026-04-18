@@ -452,21 +452,26 @@
       <h2 class="st" style="text-align:center">Contactez un conseiller formation</h2>
       <p class="sl" style="text-align:center;margin:0 auto 36px">Pas de chatbot, pas de réponse automatique. Un expert de la performance commerciale vous rappelle personnellement pour comprendre votre contexte et vous recommandér le dispositif le plus pertinent.</p>
       <div style="background:#fff;border-radius:var(--rx);border:1px solid var(--g100);padding:40px;box-shadow:var(--sm)">
-        <form onsubmit="handleForm(event)">
+        <form onsubmit="handleForm(event)" data-form-type="rappel-conseiller">
+          <input type="hidden" name="_subject" value="KESTIO — Demande de rappel conseiller (accueil)">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="Formulaire" value="Demande de rappel (accueil)">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
           <div class="fg">
-            <div class="fgrp"><label for="prenom">Prénom *</label><input class="finp" type="text" id="prenom" placeholder="Votre prénom" required></div>
-            <div class="fgrp"><label for="nom">Nom *</label><input class="finp" type="text" id="nom" placeholder="Votre nom" required></div>
-            <div class="fgrp"><label for="email">Email professionnel *</label><input class="finp" type="email" id="email" placeholder="vous@entreprise.com" required></div>
-            <div class="fgrp"><label for="tel">Téléphone</label><input class="finp" type="tel" id="tel" placeholder="06 00 00 00 00"></div>
-            <div class="fgrp"><label for="entreprise">Entreprise</label><input class="finp" type="text" id="entreprise" placeholder="Nom de votre entreprise"></div>
+            <div class="fgrp"><label for="prenom">Prénom *</label><input class="finp" type="text" id="prenom" name="Prénom" placeholder="Votre prénom" required></div>
+            <div class="fgrp"><label for="nom">Nom *</label><input class="finp" type="text" id="nom" name="Nom" placeholder="Votre nom" required></div>
+            <div class="fgrp"><label for="email">Email professionnel *</label><input class="finp" type="email" id="email" name="email" placeholder="vous@entreprise.com" required></div>
+            <div class="fgrp"><label for="tel">Téléphone</label><input class="finp" type="tel" id="tel" name="Téléphone" placeholder="06 00 00 00 00"></div>
+            <div class="fgrp"><label for="entreprise">Entreprise</label><input class="finp" type="text" id="entreprise" name="Entreprise" placeholder="Nom de votre entreprise"></div>
             <div class="fgrp"><label for="equipe">Taille de l'équipe commerciale</label>
-              <select class="fsel" id="equipe"><option value="">Sélectionnez</option><option>1 à 5 commerciaux</option><option>6 à 15 commerciaux</option><option>16 à 50 commerciaux</option><option>Plus de 50 commerciaux</option></select>
+              <select class="fsel" id="equipe" name="Taille équipe"><option value="">Sélectionnez</option><option>1 à 5 commerciaux</option><option>6 à 15 commerciaux</option><option>16 à 50 commerciaux</option><option>Plus de 50 commerciaux</option></select>
             </div>
             <div class="fgrp ff"><label for="besoin">Votre besoin principal *</label>
-              <select class="fsel" id="besoin" required><option value="">Sélectionnez votre besoin</option><option>Me certifier à titre individuel</option><option>Former et certifier mon équipe (intra)</option><option>Rejoindre une session inter-entreprises</option><option>Comprendre la certification et les modalités</option><option>Étudier les options de financement (OPCO)</option></select>
+              <select class="fsel" id="besoin" name="Besoin principal" required><option value="">Sélectionnez votre besoin</option><option>Me certifier à titre individuel</option><option>Former et certifier mon équipe (intra)</option><option>Rejoindre une session inter-entreprises</option><option>Comprendre la certification et les modalités</option><option>Étudier les options de financement (OPCO)</option></select>
             </div>
           </div>
-          <div id="form-ok" style="display:none;margin-top:20px;padding:16px 20px;background:var(--green-l);border-radius:var(--rm);font-family:var(--tf);font-size:14px;font-weight:600;color:#2D6B47;text-align:center">Votre demande a bien été envoyée — un conseiller vous contacte sous 24h.</div>
+          <div id="form-ok" data-form-ok style="display:none;margin-top:20px;padding:16px 20px;background:var(--green-l);border-radius:var(--rm);font-family:var(--tf);font-size:14px;font-weight:600;color:#2D6B47;text-align:center">Votre demande a bien été envoyée — un conseiller vous contacte sous 24h.</div>
           <button type="submit" class="btn-bl" style="width:100%;justify-content:center;margin-top:20px;padding:15px;font-size:15px">Être rappelé par un conseiller →</button>
           <p class="fnote">Réponse sous 24h — Sans engagement</p>
         </form>
@@ -528,5 +533,6 @@
 function toggleFaq(btn){const item=btn.closest('.faq-item');item.classList.toggle('open')}
 function handleForm(e){e.preventDefault();document.getElementById('form-ok').style.display='block';e.target.querySelector('button[type="submit"]').style.display='none'}
 </script>
+<script src="js/main.js"></script>
 </body>
 </html>

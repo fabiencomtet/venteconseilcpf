@@ -240,37 +240,42 @@
     <div class="ey">Contact</div>
     <h2 class="st" style="text-align:center">Demander une proposition personnalisée</h2>
     <p class="sl" style="text-align:center;margin-left:auto;margin-right:auto">Décrivez votre besoin et nous vous adresserons une proposition adaptée à votre contexte dans les 48 heures.</p>
-    <form onsubmit="handleForm(event)" style="background:#fff;border-radius:var(--rl);padding:32px;box-shadow:var(--sm)">
+    <form onsubmit="handleForm(event)" data-form-type="devis-intra" style="background:#fff;border-radius:var(--rl);padding:32px;box-shadow:var(--sm)">
+      <input type="hidden" name="_subject" value="KESTIO — Demande de devis intra-entreprise">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="Formulaire" value="Devis intra-entreprise">
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
       <div class="fg">
-        <div class="fgrp"><label for="nom">Nom *</label><input class="finp" type="text" id="nom" required></div>
-        <div class="fgrp"><label for="prenom">Prénom *</label><input class="finp" type="text" id="prenom" required></div>
-        <div class="fgrp"><label for="fonction">Fonction</label><input class="finp" type="text" id="fonction" placeholder="Ex : DRH, Directeur Commercial, RF..."></div>
-        <div class="fgrp"><label for="entreprise">Entreprise *</label><input class="finp" type="text" id="entreprise" required></div>
-        <div class="fgrp"><label for="email">Email professionnel *</label><input class="finp" type="email" id="email" required></div>
-        <div class="fgrp"><label for="telephone">Téléphone</label><input class="finp" type="tel" id="telephone"></div>
-        <div class="fgrp"><label for="parcours-sel">Parcours souhaite</label>
-          <select class="fsel" id="parcours-sel">
-            <option value="">A definir ensemble</option>
+        <div class="fgrp"><label for="nom">Nom *</label><input class="finp" type="text" id="nom" name="Nom" required></div>
+        <div class="fgrp"><label for="prenom">Prénom *</label><input class="finp" type="text" id="prenom" name="Prénom" required></div>
+        <div class="fgrp"><label for="fonction">Fonction</label><input class="finp" type="text" id="fonction" name="Fonction" placeholder="Ex : DRH, Directeur Commercial, RF..."></div>
+        <div class="fgrp"><label for="entreprise">Entreprise *</label><input class="finp" type="text" id="entreprise" name="Entreprise" required></div>
+        <div class="fgrp"><label for="email">Email professionnel *</label><input class="finp" type="email" id="email" name="email" required></div>
+        <div class="fgrp"><label for="telephone">Téléphone</label><input class="finp" type="tel" id="telephone" name="Téléphone"></div>
+        <div class="fgrp"><label for="parcours-sel">Parcours souhaité</label>
+          <select class="fsel" id="parcours-sel" name="Parcours souhaité">
+            <option value="">À définir ensemble</option>
             <option value="fondamentaux">Fondamentaux de la vente-conseil (3j)</option>
             <option value="posture">Posture & relation client (4j)</option>
             <option value="complexe">Vente complexe (4j)</option>
             <option value="ia">Vente augmentée par l'IA (4j)</option>
           </select>
         </div>
-        <div class="fgrp"><label for="participants">Nombre de participants estime</label>
-          <select class="fsel" id="participants">
+        <div class="fgrp"><label for="participants">Nombre de participants estimé</label>
+          <select class="fsel" id="participants" name="Participants">
             <option value="">Sélectionnez</option>
-            <option value="4-6">4 a 6 participants</option>
-            <option value="7-10">7 a 10 participants</option>
-            <option value="11-15">11 a 15 participants</option>
+            <option value="4-6">4 à 6 participants</option>
+            <option value="7-10">7 à 10 participants</option>
+            <option value="11-15">11 à 15 participants</option>
             <option value="15+">Plus de 15 participants</option>
           </select>
         </div>
         <div class="fgrp ff"><label for="message">Votre besoin / contexte</label>
-          <textarea class="finp" id="message" rows="4" placeholder="Décrivez brièvement votre contexte, vos objectifs et vos contraintes éventuelles..." style="resize:vertical"></textarea>
+          <textarea class="finp" id="message" name="Message" rows="4" placeholder="Décrivez brièvement votre contexte, vos objectifs et vos contraintes éventuelles..." style="resize:vertical"></textarea>
         </div>
       </div>
-      <div id="form-ok" style="display:none;margin-top:20px;padding:16px 20px;background:var(--green-l);border-radius:var(--rm);font-family:var(--tf);font-size:14px;font-weight:600;color:#2D6B47;text-align:center">Votre demande a bien été envoyée — un conseiller vous contacte sous 48h.</div>
+      <div id="form-ok" data-form-ok style="display:none;margin-top:20px;padding:16px 20px;background:var(--green-l);border-radius:var(--rm);font-family:var(--tf);font-size:14px;font-weight:600;color:#2D6B47;text-align:center">Votre demande a bien été envoyée — un conseiller vous contacte sous 48h.</div>
       <button type="submit" class="btn-bl" style="width:100%;text-align:center;margin-top:20px;padding:15px;font-size:15px">Recevoir une proposition personnalisée</button>
       <p class="fnote">Réponse sous 48h — Sans engagement</p>
     </form>
@@ -326,8 +331,7 @@
   </div>
 </footer>
 
-<script>
-function handleForm(e){e.preventDefault();document.getElementById('form-ok').style.display='block';e.target.querySelector('button[type="submit"]').style.display='none'}
-</script>
+
+<script src="js/main.js"></script>
 </body>
 </html>

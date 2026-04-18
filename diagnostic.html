@@ -313,6 +313,7 @@
   </div>
 </footer>
 
+<script src="js/main.js"></script>
 <script>
 (function(){
   var form=document.getElementById('diag-form');
@@ -370,12 +371,47 @@
       alert('Veuillez saisir une adresse email valide.');
       return;
     }
-    sendBtn.textContent='Envoyé !';
+
+    // Récupère les réponses pour les envoyer dans le mail
+    var answers={};
+    for(var i=1;i<=5;i++){
+      var sel=form.querySelector('input[name="q'+i+'"]:checked');
+      answers['Question '+i+' (sur 3)']=sel?sel.value:'-';
+    }
+    var scoreText=scoreBadge.textContent||'';
+    var titre=resultTitle.textContent||'';
+
+    sendBtn.textContent='Envoi en cours…';
     sendBtn.disabled=true;
     sendBtn.style.opacity='0.6';
     sendBtn.style.cursor='default';
     emailInput.disabled=true;
     emailInput.style.background='var(--g50)';
+
+    var payload=Object.assign({
+      _subject:'KESTIO — Demande de rapport diagnostic',
+      _template:'table',
+      _captcha:'false',
+      Formulaire:'Diagnostic vente-conseil',
+      email:email,
+      'Score obtenu':scoreText,
+      'Parcours recommandé':titre
+    },answers);
+
+    if(typeof sendToFormSubmit==='function'){
+      sendToFormSubmit(payload).then(function(data){
+        sendBtn.textContent='Rapport envoyé \u2713';
+      }).catch(function(){
+        sendBtn.textContent='Réessayer';
+        sendBtn.disabled=false;
+        sendBtn.style.opacity='1';
+        sendBtn.style.cursor='pointer';
+        emailInput.disabled=false;
+        alert("Un problème est survenu. Merci de réessayer ou de nous écrire à fabien.comtet@kestio.com.");
+      });
+    }else{
+      sendBtn.textContent='Envoyé !';
+    }
   });
 })();
 </script>
