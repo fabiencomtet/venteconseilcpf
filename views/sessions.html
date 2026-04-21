@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Sessions inter | Admin KESTIO</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="admin-body">
+
+<header class="admin-header">
+  <div class="admin-header-in">
+    <a href="/admin" class="admin-logo"><img src="/img/logo/kestio-noir.png" alt="KESTIO"></a>
+    <nav class="admin-nav">
+      <a href="/admin/sessions" class="active">Sessions inter</a>
+      <a href="/admin/users">Utilisateurs</a>
+      <a href="/admin/activity">Journal</a>
+    </nav>
+    <div class="admin-user">
+      <span class="admin-user-name">{{displayName}}</span>
+      <a href="/admin/change-password" class="admin-user-link">Mot de passe</a>
+      <form method="POST" action="/admin/logout" class="inline-form">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <button type="submit" class="btn-sm btn-logout">Se déconnecter</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="admin-main">
+  <div class="admin-title-row">
+    <div>
+      <div class="ey">Sessions inter-entreprises</div>
+      <h1>Gérer les dates programmées</h1>
+      <p class="admin-sub">Les sessions marquées « Active » apparaissent automatiquement sur le site public. L'archivage garde l'historique sans supprimer.</p>
+    </div>
+    <a href="/admin/sessions/new" class="btn-bl">+ Nouvelle session</a>
+  </div>
+
+  {{{error_html}}}
+  {{{notice_html}}}
+
+  <div class="admin-tbl-wrap">
+    <table class="admin-tbl">
+      <thead>
+        <tr><th>Parcours</th><th>Dates</th><th>Lieu</th><th>Places</th><th>Statut</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        {{{rowsHtml_raw}}}
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

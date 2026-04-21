@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Journal d'activité | Admin KESTIO</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="admin-body">
+
+<header class="admin-header">
+  <div class="admin-header-in">
+    <a href="/admin" class="admin-logo"><img src="/img/logo/kestio-noir.png" alt="KESTIO"></a>
+    <nav class="admin-nav">
+      <a href="/admin/sessions">Sessions inter</a>
+      <a href="/admin/users">Utilisateurs</a>
+      <a href="/admin/activity" class="active">Journal</a>
+    </nav>
+    <div class="admin-user">
+      <span class="admin-user-name">{{displayName}}</span>
+      <form method="POST" action="/admin/logout" class="inline-form">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <button type="submit" class="btn-sm btn-logout">Se déconnecter</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="admin-main">
+  <div class="admin-title-row">
+    <div>
+      <div class="ey">Audit</div>
+      <h1>Journal d'activité</h1>
+      <p class="admin-sub">Les 200 dernières actions effectuées dans l'admin — qui a modifié quoi et quand.</p>
+    </div>
+  </div>
+
+  <div class="admin-tbl-wrap">
+    <table class="admin-tbl admin-tbl-compact">
+      <thead>
+        <tr><th>Date</th><th>Utilisateur</th><th>Action</th><th>Cible</th><th>Détails</th></tr>
+      </thead>
+      <tbody>
+        {{{rowsHtml_raw}}}
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

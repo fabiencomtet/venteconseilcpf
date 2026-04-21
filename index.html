@@ -10,6 +10,12 @@
 </head>
 <body>
 
+<!-- CPF TOP STRIP -->
+<div class="cpf-strip" role="complementary" aria-label="Financement CPF">
+  <span class="cpf-flag" aria-hidden="true"><span></span><span></span><span></span></span>
+  <span>Formation certifiante · <strong>Finançable avec Mon Compte Formation (CPF)</strong> · <a href="https://www.moncompteformation.gouv.fr" target="_blank" rel="noopener">Vérifier mes droits</a></span>
+</div>
+
 <!-- NAV -->
 <nav class="nav">
   <a class="nav-logo" href="#hero"><img src="img/logo/kestio-noir.png" alt="KESTIO"></a>
@@ -29,19 +35,26 @@
 <div id="hero" class="hero">
   <div class="hero-grid">
     <div class="hero-content">
-      <div class="hero-tag"><span class="hero-dot"></span>Certifié Qualiopi · Répertoire Spécifique France Compétences</div>
+      <div class="hero-tag"><span class="hero-dot"></span>Certifié Qualiopi · Répertoire Spécifique France Compétences · Éligible CPF</div>
       <h1>Améliorez durablement la performance de vos équipes <em>commerciales</em></h1>
       <p class="hero-sub">La certification « Intégrer l'approche conseil à la démarche de vente » prépare vos commerciaux à passer de la posture vendeur à la posture conseiller stratégique — la compétence différenciante du commercial B2B d'aujourd'hui.</p>
       <div class="hero-acts">
         <button class="btn-w" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Être rappelé par un expert →</button>
         <button class="btn-gh" onclick="document.getElementById('parcours').scrollIntoView({behavior:'smooth'})">Découvrir les parcours</button>
       </div>
+      <a href="https://www.moncompteformation.gouv.fr" target="_blank" rel="noopener" class="hero-cpf-link">Je vérifie mes droits sur Mon Compte Formation →</a>
     </div>
     <div class="hero-visual">
       <img src="img/hero-conseil.webp" alt="Échange commercial — la posture conseil en action" fetchpriority="high">
-      <div style="position:absolute;bottom:-16px;left:-16px;background:var(--green);color:#fff;border-radius:var(--rm);padding:12px 18px;font-family:var(--tf);font-size:12px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.2);line-height:1.4">
-        <span style="display:block;font-size:22px;letter-spacing:-.02em">92%</span>
-        des participants appliquent<br>les acquis sous 3 mois
+      <div class="hero-badges">
+        <div class="hero-badge-stat">
+          <span class="num">92%</span>
+          des participants appliquent<br>les acquis sous 3 mois
+        </div>
+        <div class="hero-badge-cpf">
+          <span class="num">100%</span>
+          <span class="lbl">finançable<br>CPF · OPCO · Plan</span>
+        </div>
       </div>
     </div>
   </div>
@@ -57,11 +70,15 @@
   </div>
 </div>
 
-<!-- QUALIOPI -->
+<!-- TRUSTBAR -->
 <div class="q-strip">
   <div class="q-in">
-    <img src="img/logo/qualiopi.webp" alt="Qualiopi">
-    <span class="q-txt">Certifié Qualiopi — Financement OPCO possible</span>
+    <div class="q-item">
+      <img src="img/logo/qualiopi.webp" alt="Qualiopi">
+    </div>
+    <span class="q-pill"><span class="dot"></span>Éligible CPF — Mon Compte Formation</span>
+    <span class="q-pill q-pill-fc"><span class="dot"></span>Répertoire Spécifique France Compétences</span>
+    <span class="q-txt">Formation certifiante finançable CPF, OPCO et Plan de développement des compétences</span>
   </div>
 </div>
 
@@ -533,6 +550,6 @@
 function toggleFaq(btn){const item=btn.closest('.faq-item');item.classList.toggle('open')}
 function handleForm(e){e.preventDefault();document.getElementById('form-ok').style.display='block';e.target.querySelector('button[type="submit"]').style.display='none'}
 </script>
-<script src="js/main.js?v=2"></script>
+<script src="js/main.js?v=3"></script>
 </body>
 </html>

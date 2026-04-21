@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>{{title}} | Admin KESTIO</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="admin-body">
+
+<header class="admin-header">
+  <div class="admin-header-in">
+    <a href="/admin" class="admin-logo"><img src="/img/logo/kestio-noir.png" alt="KESTIO"></a>
+    <nav class="admin-nav">
+      <a href="/admin/sessions" class="active">Sessions inter</a>
+      <a href="/admin/users">Utilisateurs</a>
+      <a href="/admin/activity">Journal</a>
+    </nav>
+    <div class="admin-user">
+      <span class="admin-user-name">{{displayName}}</span>
+      <form method="POST" action="/admin/logout" class="inline-form">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <button type="submit" class="btn-sm btn-logout">Se déconnecter</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="admin-main admin-narrow">
+  <p><a href="/admin/sessions" class="back-link">← Retour à la liste</a></p>
+  <div class="ey">Session inter</div>
+  <h1>{{title}}</h1>
+
+  {{{error_html}}}
+
+  <form method="POST" action="{{action}}" class="admin-form">
+    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+    <div class="fgrp">
+      <label for="parcours">Parcours *</label>
+      <select class="fsel" id="parcours" name="parcours" required>
+        <option value="fondamentaux" {{parcours_sel_fondamentaux}}>Parcours 01 — Fondamentaux de la vente-conseil</option>
+        <option value="posture" {{parcours_sel_posture}}>Parcours 02 — Posture &amp; relation client</option>
+        <option value="complexe" {{parcours_sel_complexe}}>Parcours 03 — Vente complexe</option>
+        <option value="ia" {{parcours_sel_ia}}>Parcours 04 — Vente augmentée par l'IA</option>
+      </select>
+    </div>
+
+    <div class="fgrp">
+      <label for="dates">Libellé des dates *</label>
+      <input class="finp" type="text" id="dates" name="dates" value="{{dates}}" required placeholder="ex. 15-17 sept. 2026">
+      <p class="fhelp">Tel que vous voulez l'afficher sur le site public (ex. « 15-17 sept. 2026 »).</p>
+    </div>
+
+    <div class="fgrp">
+      <label for="date_start">Date de début (pour le tri chronologique)</label>
+      <input class="finp" type="date" id="date_start" name="date_start" value="{{date_start}}">
+      <p class="fhelp">Optionnel mais recommandé : permet de trier les sessions et d'archiver automatiquement les dates passées.</p>
+    </div>
+
+    <div class="fgrp">
+      <label for="lieu">Lieu *</label>
+      <input class="finp" type="text" id="lieu" name="lieu" value="{{lieu}}" required placeholder="Paris / Lyon / Distanciel">
+    </div>
+
+    <div class="fgrp">
+      <label for="places">Places disponibles</label>
+      <input class="finp" type="number" id="places" name="places" min="0" max="50" value="{{places}}" required>
+    </div>
+
+    <div class="fgrp fgrp-check">
+      <label><input type="checkbox" name="active" {{active_checked}}> Session active (visible sur le site public)</label>
+    </div>
+
+    <div class="admin-form-actions">
+      <a href="/admin/sessions" class="btn-gh">Annuler</a>
+      <button type="submit" class="btn-bl">{{submitLabel}}</button>
+    </div>
+  </form>
+</main>
+</body>
+</html>

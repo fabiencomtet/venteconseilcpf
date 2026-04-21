@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Utilisateurs | Admin KESTIO</title>
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="admin-body">
+
+<header class="admin-header">
+  <div class="admin-header-in">
+    <a href="/admin" class="admin-logo"><img src="/img/logo/kestio-noir.png" alt="KESTIO"></a>
+    <nav class="admin-nav">
+      <a href="/admin/sessions">Sessions inter</a>
+      <a href="/admin/users" class="active">Utilisateurs</a>
+      <a href="/admin/activity">Journal</a>
+    </nav>
+    <div class="admin-user">
+      <span class="admin-user-name">{{displayName}}</span>
+      <a href="/admin/change-password" class="admin-user-link">Mot de passe</a>
+      <form method="POST" action="/admin/logout" class="inline-form">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <button type="submit" class="btn-sm btn-logout">Se déconnecter</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<main class="admin-main">
+  <div class="admin-title-row">
+    <div>
+      <div class="ey">Administrateurs</div>
+      <h1>Gérer les administrateurs</h1>
+      <p class="admin-sub">Seuls les administrateurs listés ci-dessous peuvent accéder à cette interface. Chaque nouvel utilisateur reçoit un mot de passe temporaire qu'il devra changer à sa première connexion.</p>
+    </div>
+  </div>
+
+  {{{error_html}}}
+  {{{notice_html}}}
+  {{{generated_html}}}
+
+  <section class="admin-panel">
+    <h2>Inviter un nouvel administrateur</h2>
+    <form method="POST" action="/admin/users" class="admin-form admin-form-inline">
+      <input type="hidden" name="_csrf" value="{{csrfToken}}">
+      <div class="fgrp"><label for="email">Email *</label><input class="finp" type="email" id="email" name="email" required placeholder="prenom.nom@kestio.com"></div>
+      <div class="fgrp"><label for="display_name">Nom affiché</label><input class="finp" type="text" id="display_name" name="display_name" placeholder="Prénom Nom"></div>
+      <button type="submit" class="btn-bl">Créer le compte</button>
+    </form>
+    <p class="fhelp">Un mot de passe temporaire sera généré automatiquement. Transmettez-le à la personne concernée en main propre ou par un canal sécurisé — jamais par email.</p>
+  </section>
+
+  <section class="admin-panel">
+    <h2>Liste des administrateurs</h2>
+    <div class="admin-tbl-wrap">
+      <table class="admin-tbl">
+        <thead>
+          <tr><th>Email</th><th>Nom</th><th>Statut</th><th>Dernière connexion</th><th>Actions</th></tr>
+        </thead>
+        <tbody>
+          {{{rowsHtml_raw}}}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+</body>
+</html>

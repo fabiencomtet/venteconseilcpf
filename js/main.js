@@ -20,7 +20,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Pré-remplissage contact.html depuis paramètres URL (inscription à une session)
   prefillInscriptionContext();
+
+  // Chargement dynamique des sessions inter depuis l'API
+  loadDynamicSessions();
 });
+
+// ================== SESSIONS DYNAMIQUES (depuis /api/sessions) ==================
+
+async function loadDynamicSessions() {
+  const tbody = document.querySelector('.sessions-tbl tbody');
+  if (!tbody) return;
+
+  const currentParcours = detectParcoursFromPath();
+  const showParcoursColumn = !currentParcours;
+
+  try {
+    const resp = await fetch('/api/sessions', { headers: { Accept: 'application/json' } });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    let sessions = Array.isArray(data.sessions) ? data.sessions : [];
+    if (currentParcours) sessions = sessions.filter((s) => s.parcours === currentParcours);
+
+    if (sessions.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="${showParcoursColumn ? 5 : 4}" style="text-align:center;padding:28px;color:var(--g500);font-style:italic">Aucune session inter programmée pour le moment. <a href="${contactPath()}" style="color:var(--green);font-weight:600">Contactez-nous</a> pour connaître les prochaines dates.</td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = sessions.map((s) => renderSessionRow(s, showParcoursColumn)).join('');
+  } catch (err) {
+    console.warn('Sessions dynamiques indisponibles, conservation du contenu statique :', err);
+    // Fallback : on laisse les lignes statiques existantes
+  }
+}
+
+function detectParcoursFromPath() {
+  const p = window.location.pathname;
+  if (p.includes('fondamentaux-vente-conseil')) return 'fondamentaux';
+  if (p.includes('posture-relation-client')) return 'posture';
+  if (p.includes('vente-complexe')) return 'complexe';
+  if (p.includes('vente-augmentee-ia')) return 'ia';
+  return null;
+}
+
+function contactPath() {
+  return window.location.pathname.includes('/formations/') ? '../contact.html' : 'contact.html';
+}
+
+function renderSessionRow(s, showParcoursColumn) {
+  const url = `${contactPath()}?action=inscription&parcours=${encodeURIComponent(s.parcours)}&dates=${encodeURIComponent(s.dates)}&lieu=${encodeURIComponent(s.lieu)}`;
+  const btn = `<a href="${url}" class="btn-bl btn-sm">S'inscrire</a>`;
+  const placesLabel = s.places + ' ' + (s.places === 1 ? 'place' : 'places');
+  const placesCls = s.places <= 3 ? 'places places-low' : 'places';
+  const placesCell = `<span class="${placesCls}">${placesLabel}</span>`;
+  if (showParcoursColumn) {
+    return `<tr><td><strong>${escapeHtml(labelParcoursPublic(s.parcours))}</strong></td><td>${escapeHtml(s.dates)}</td><td>${escapeHtml(s.lieu)}</td><td>${placesCell}</td><td>${btn}</td></tr>`;
+  }
+  return `<tr><td><strong>${escapeHtml(s.dates)}</strong></td><td>${escapeHtml(s.lieu)}</td><td>${placesCell}</td><td>${btn}</td></tr>`;
+}
+
+function labelParcoursPublic(slug) {
+  return (
+    {
+      fondamentaux: 'Parcours 01 — Fondamentaux de la vente-conseil',
+      posture: 'Parcours 02 — Posture & relation client',
+      complexe: 'Parcours 03 — Vente complexe',
+      ia: 'Parcours 04 — Vente augmentée par l\u2019IA',
+    }[slug] || slug
+  );
+}
+
+function escapeHtml(v) {
+  if (v === null || v === undefined) return '';
+  return String(v).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
 
 // FAQ accordion
 function toggleFaq(btn) {
