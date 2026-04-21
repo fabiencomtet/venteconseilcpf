@@ -31,11 +31,11 @@ a{text-decoration:none;color:inherit}
 ul{list-style:none}
 
 /* --- CPF TOP STRIP --- */
-.cpf-strip{position:fixed;top:0;left:0;right:0;z-index:201;background:#000091;color:#fff;height:36px;display:flex;align-items:center;justify-content:center;padding:0 24px;font-family:var(--tf);font-size:12.5px;font-weight:500;letter-spacing:.01em;gap:10px}
+.cpf-strip{position:fixed;top:0;left:0;right:0;z-index:201;background:#164194;color:#fff;height:36px;display:flex;align-items:center;justify-content:center;padding:0 24px;font-family:var(--tf);font-size:12.5px;font-weight:500;letter-spacing:.01em;gap:10px}
 .cpf-strip strong{font-weight:700}
 .cpf-strip .cpf-flag{display:inline-flex;height:16px;width:24px;border-radius:2px;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.2);flex-shrink:0}
 .cpf-strip .cpf-flag span{flex:1}
-.cpf-strip .cpf-flag span:nth-child(1){background:#000091}
+.cpf-strip .cpf-flag span:nth-child(1){background:#164194}
 .cpf-strip .cpf-flag span:nth-child(2){background:#fff}
 .cpf-strip .cpf-flag span:nth-child(3){background:#E1000F}
 .cpf-strip a{color:#fff;text-decoration:underline;text-underline-offset:2px;font-weight:600;transition:opacity .15s}
@@ -72,7 +72,7 @@ ul{list-style:none}
 .hero-badges{position:absolute;bottom:-16px;left:-16px;display:flex;flex-direction:column;gap:10px;z-index:3}
 .hero-badge-stat{background:var(--green);color:#fff;border-radius:var(--rm);padding:12px 18px;font-family:var(--tf);font-size:12px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.2);line-height:1.4}
 .hero-badge-stat .num{display:block;font-size:22px;letter-spacing:-.02em}
-.hero-badge-cpf{background:#000091;color:#fff;border-radius:var(--rm);padding:12px 18px;font-family:var(--tf);font-size:12px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,144,.25);line-height:1.4;display:flex;align-items:center;gap:10px}
+.hero-badge-cpf{background:#164194;color:#fff;border-radius:var(--rm);padding:12px 18px;font-family:var(--tf);font-size:12px;font-weight:700;box-shadow:0 8px 24px rgba(22,65,148,.25);line-height:1.4;display:flex;align-items:center;gap:10px}
 .hero-badge-cpf .num{font-size:22px;letter-spacing:-.02em}
 .hero-badge-cpf .lbl{font-weight:500;font-size:11px;line-height:1.35}
 .hero-cpf-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:var(--tf);font-size:13px;font-weight:500;color:rgba(255,255,255,.85);text-decoration:underline;text-underline-offset:3px;transition:color .15s}
@@ -104,16 +104,15 @@ ul{list-style:none}
 .si-n{display:block;font-family:var(--tf);font-size:34px;font-weight:800;color:var(--blue);letter-spacing:-.03em;line-height:1}
 .si-l{font-size:12px;color:var(--g400);margin-top:5px}
 
-/* --- TRUSTBAR (Qualiopi + CPF + France Compétences) --- */
-.q-strip{background:var(--green-l);border-bottom:1px solid rgba(124,191,148,.25);padding:18px 48px}
-.q-in{max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap}
-.q-in img{height:38px;width:auto}
-.q-txt{font-family:var(--tf);font-size:13px;font-weight:600;color:#2D6B47;text-align:center;max-width:420px;line-height:1.5}
+/* --- TRUSTBAR (Qualiopi + Mon Compte Formation + France Compétences) --- */
+.q-strip{background:var(--green-l);border-bottom:1px solid rgba(124,191,148,.25);padding:24px 48px}
+.q-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.q-in .q-qualiopi{height:56px;width:auto}
+.q-in .q-mcf{height:96px;width:auto;border-radius:6px;box-shadow:0 2px 10px rgba(22,65,148,.15)}
+.q-txt{font-family:var(--tf);font-size:13px;font-weight:600;color:#2D6B47;text-align:center;max-width:280px;line-height:1.5}
 .q-item{display:flex;align-items:center;gap:10px}
-.q-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:var(--rf);background:#fff;border:1.5px solid #000091;font-family:var(--tf);font-size:12.5px;font-weight:700;color:#000091;letter-spacing:.01em}
-.q-pill-fc{border-color:var(--blue);color:var(--blue)}
-.q-pill .dot{width:7px;height:7px;border-radius:50%;background:#000091}
-.q-pill-fc .dot{background:var(--blue)}
+.q-pill-fc{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:var(--rf);background:#fff;border:1.5px solid var(--blue);font-family:var(--tf);font-size:12.5px;font-weight:700;color:var(--blue);letter-spacing:.01em}
+.q-pill-fc .dot{width:7px;height:7px;border-radius:50%;background:var(--blue)}
 
 /* --- LOGOS CAROUSEL --- */
 .logos-sec{background:#fff;padding:36px 0;border-bottom:1px solid var(--g100);overflow:hidden}
